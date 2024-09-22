@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Optional: Add a CSS file for styling -->
+</head>
+<body>
+
+    <h1>Project Details</h1>
+
+    <div>
+        <h2>Project: <span th:text="${project.pName}"></span></h2>
+        <p><strong>Project ID:</strong> <span th:text="${project.pId}"></span></p>
+        <p><strong>Details:</strong> <span th:text="${project.pDetails}"></span></p>
+        <p><strong>Priority:</strong> <span th:text="${project.pPriority}"></span></p>
+        <p><strong>Start Date:</strong> <span th:text="${#dates.format(project.pStartDate, 'yyyy-MM-dd')}"></span></p>
+        <p><strong>End Date:</strong> <span th:text="${#dates.format(project.pEndDate, 'yyyy-MM-dd')}"></span></p>
+        <p><strong>Required Skills:</strong> <span th:text="${project.pSkills}"></span></p>
+        <p><strong>Concepts:</strong> <span th:text="${project.pConcepts}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${project.pFlag == 1 ? 'Active' : 'Inactive'}"></span></p>
+    </div>
+
+    <a href="/projects">Back to Projects List</a> <!-- Link to go back to the list of projects -->
+
+</body>
+</html>

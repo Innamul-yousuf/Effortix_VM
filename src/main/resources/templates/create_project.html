@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project List</title>
+</head>
+<body>
+
+    <h1>Project List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="project : ${projects}">
+                <td th:text="${project.pId}">Project ID</td>
+                <td th:text="${project.pName}">Project Name</td>
+                <td>
+                    <a th:href="@{/projects/{id}(id=${project.pId})}">View</a> |
+                    <a th:href="@{/projects/{id}/edit(id=${project.pId})}">Edit</a> |
+                    
+                    <!-- DELETE form -->
+                    <form th:action="@{/projects/{id}/delete(id=${project.pId})}" method="post" style="display:inline;">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this project?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/projects/new}">Create New Project</a>
+
+</body>
+</html>
